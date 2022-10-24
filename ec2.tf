@@ -25,52 +25,52 @@ resource "aws_instance" "docker_instance" {
 #       agent       = false
 #   }
  # }
-  provisioner "file" {
-    source      = "Dockerfile"
-    destination = "/home/ubuntu/Dockerfile"
-    connection {
-      type        = "ssh"
-      user        = "ubuntu"
-      private_key = file("congo.pem")
-      host        = aws_instance.docker_instance[0].public_ip
-      timeout     = "3m"
-      agent       = false
-  }
+#   provisioner "file" {
+#     source      = "Dockerfile"
+#     destination = "/home/ubuntu/Dockerfile"
+#     connection {
+#       type        = "ssh"
+#       user        = "ubuntu"
+#       private_key = file("congo.pem")
+#       host        = aws_instance.docker_instance[0].public_ip
+#       timeout     = "3m"
+#       agent       = false
+#   }
 
-  }
-  # build_docker_image.sh from my computer
-  provisioner "file" {
-    source      = "docker_build_image.sh"
-    destination = "/home/ubuntu/docker_build_image.sh"
-    connection {
-      type        = "ssh"
-      user        = "ubuntu"
-      private_key = file("congo.pem")
-      host        = aws_instance.docker_instance[0].public_ip
-      timeout     = "3m"
-      agent       = false
-  }
+#   }
+#   # build_docker_image.sh from my computer
+#   provisioner "file" {
+#     source      = "docker_build_image.sh"
+#     destination = "/home/ubuntu/docker_build_image.sh"
+#     connection {
+#       type        = "ssh"
+#       user        = "ubuntu"
+#       private_key = file("congo.pem")
+#       host        = aws_instance.docker_instance[0].public_ip
+#       timeout     = "3m"
+#       agent       = false
+#   }
 
 
-  }
-  #  set permissions and run the build_docker_image.sh
-  provisioner "remote-exec" {
-    inline = [
-      "sudo chmod +x /home/ubuntu/docker_build_image.sh",
-      "sh /home/ubuntu/docker_build_image.sh"
-    ]
-    connection {
-      type        = "ssh"
-      user        = "ubuntu"
-      private_key = file("congo.pem")
-      host        = aws_instance.docker_instance[0].public_ip
-      timeout     = "3m"
-      agent       = false
-  }
-  }
+#   }
+#   #  set permissions and run the build_docker_image.sh
+#   provisioner "remote-exec" {
+#     inline = [
+#       "sudo chmod +x /home/ubuntu/docker_build_image.sh",
+#       "sh /home/ubuntu/docker_build_image.sh"
+#     ]
+#     connection {
+#       type        = "ssh"
+#       user        = "ubuntu"
+#       private_key = file("congo.pem")
+#       host        = aws_instance.docker_instance[0].public_ip
+#       timeout     = "3m"
+#       agent       = false
+#   }
+#   }
 
-  depends_on = [aws_instance.docker_instance]
-}
+#   depends_on = [aws_instance.docker_instance]
+# }
 
 # resource "null_resource" "noname" {
 #   connection {
