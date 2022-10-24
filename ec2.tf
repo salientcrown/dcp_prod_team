@@ -24,7 +24,7 @@ resource "aws_instance" "docker_instance" {
 #       timeout     = "3m"
 #       agent       = false
 #   }
-  }
+ # }
   provisioner "file" {
     source      = "Dockerfile"
     destination = "/home/ubuntu/Dockerfile"
