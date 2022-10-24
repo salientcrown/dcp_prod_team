@@ -19,5 +19,10 @@ variable "key_pair" {
 
 variable "instance_type" {
   type    = string
-  default = "t2.micro"
+  default = "t2.medium"
+}
+
+variable "passwd" {
+  type = string
+  default = "201cj8iuqsm0himje8zjezatt"
 }
