@@ -12,18 +12,18 @@ resource "aws_instance" "docker_instance" {
     Name = "${var.env}_docker_instance_demo"
   }
 }
- provisioner "file" {
-    source      = "/Users/chinazamdennar/Downloads/test/passwd.txt"
-    destination = "/home/ubuntu/passwd.txt"
+#  provisioner "file" {
+#     source      = "/Users/chinazamdennar/Downloads/test/passwd.txt"
+#     destination = "/home/ubuntu/passwd.txt"
     
-    connection {
-      type        = "ssh"
-      user        = "ubuntu"
-      private_key = file("congo.pem")
-      host        = aws_instance.docker_instance[0].public_ip
-      timeout     = "3m"
-      agent       = false
-  }
+#     connection {
+#       type        = "ssh"
+#       user        = "ubuntu"
+#       private_key = file("congo.pem")
+#       host        = aws_instance.docker_instance[0].public_ip
+#       timeout     = "3m"
+#       agent       = false
+#   }
   }
   provisioner "file" {
     source      = "Dockerfile"
