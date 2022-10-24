@@ -1,1 +1,2 @@
-# terraform
+# DCP
+As a DevOp Engineer, one of the important tasks is to build a secure immutable inftastructure and application as codes. To achieve that it is important to leverage the CICD culture to speed up plan, build, integrate or deployment of Infrastruxture and applications in a secure manner. So this idea was used to in the implementation of DCP-product team request. Tools such as Github, terraform, docker and Jenkins were used.
